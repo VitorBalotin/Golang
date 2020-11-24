@@ -35,4 +35,11 @@ func main() {
 		// que irão substituir a frase
 		fmt.Printf("O numero atual é %d.\n", numeros[i])
 	}
+
+
+	// Slices tem tamanho dinamico e oferecem uma view flexivel dos elementos de um array
+	// passa-se o [indice inicial : indice final] onde : é o separador.
+	var slice []int = numeros[1:3]
+
+	fmt.Println("Slice", slice)
 }
