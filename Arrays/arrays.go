@@ -2,32 +2,41 @@ package main
 
 import "fmt"
 
+// Um Array é uma coleção de elementos que são do mesmo tipo.
+// Não é possivel misturar tipos de dados em Go.
 func main() {
-	// Definição de array, com var
+	// Definição de array [n]T, com var, onde [n] é o tamanho e T é o tipo
 	var a [2]string
-	a[0] = "Hello"
-	a[1] = "World"
-	fmt.Println("Print da primeira posição do array.")
-	fmt.Println(a[0])
-	fmt.Println("Print da segunda posição do array.")
-	fmt.Println(a[1])
-
-	fmt.Println("Print do array completo passando cada parametro.")
-	fmt.Println(a[0], a[1])
-
-	fmt.Println("Print do array completo passando passando apenas o array.")
-	fmt.Println(a)
-
-	fmt.Println("Print de cada item passando por um for")
-	for i := range a {
-		fmt.Print(a[i], " ")
-	}
-
-	fmt.Printf("\n")
 
 	// outra forma de definir array, com :=
 	numeros := [6]int{2, 3, 5, 7, 11, 13}
 	fmt.Println(numeros)
+
+	// Passando parametros para o array
+	a[0] = "Hello"
+	a[1] = "World"
+
+	// range usando index e value
+	// podemos também usar o _ (blank identifier, identificador vazio) no lugar
+	// do index se quisermos ignorar ele
+	for _, value := range a {
+		fmt.Print(value, " ")
+	}
+
+	fmt.Printf("\n")
+
+	// *******************************************************************************
+
+	// Apos ser definido dessa forma, onde o compilador diz o seu tamanho,
+	// não é possivel inserir mais valores
+	b := [...]int{1, 2, 3, 4}
+	fmt.Println("Array definido ", b)
+
+	// O tamanho do array é visto com a função len(array)
+	// *******************************************************************************
+	fmt.Println("Tamanho do array", len(b))
+
+	fmt.Println("Array definido ", b)
 
 	fmt.Println("Print de cada numero passando por um for")
 	for i := range numeros {
@@ -36,10 +45,12 @@ func main() {
 		fmt.Printf("O numero atual é %d.\n", numeros[i])
 	}
 
+	// Existem arrays multidimensionais, parecidos com matrizes
+	c := [3][2]string{
+		{"1,1", "1,2"},
+		{"2,1", "2,2"},
+		{"3,1", "3,2"}, // compilador chora se não tiver essa virgula ali
+	}
 
-	// Slices tem tamanho dinamico e oferecem uma view flexivel dos elementos de um array
-	// passa-se o [indice inicial : indice final] onde : é o separador.
-	var slice []int = numeros[1:3]
-
-	fmt.Println("Slice", slice)
+	fmt.Println(c)
 }
