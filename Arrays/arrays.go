@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 // Um Array é uma coleção de elementos que são do mesmo tipo.
+// Arrays tem seu tamanho fixo, definido na sua declaração.
 // Não é possivel misturar tipos de dados em Go.
 func main() {
 	// Definição de array [n]T, com var, onde [n] é o tamanho e T é o tipo
